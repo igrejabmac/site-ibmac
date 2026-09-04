@@ -1,0 +1,74 @@
+---
+title: "Home"
+permalink: "/index.html"
+---
+{% extends "base.njk" %}
+{% block content %}
+<section class="hero">
+  <div class="container hero-inner">
+    <div>
+      <p class="hero-eyebrow">{{ home.selo }}</p>
+      <h1>{{ home.titulo }}</h1>
+      <p>{{ home.texto }}</p>
+      <div class="hero-botoes">
+        <a href="/cultos/" class="botao botao-principal">{{ home.botao_principal }}</a>
+        <a href="/contato/" class="botao botao-secundario">{{ home.botao_secundario }}</a>
+      </div>
+    </div>
+    {# Ilustração em SVG usando as cores da logo: ondas em azul, destaque em laranja #}
+    <svg class="hero-ilustracao" viewBox="0 0 400 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="300" cy="80" r="70" fill="#DD8A4B" opacity="0.9"/>
+      <path d="M0 180c30 25 60 25 90 0s60-25 90 0 60 25 90 0 60-25 90 0 60 25 90 0" stroke="#1E3A78" stroke-width="3" stroke-linecap="round" opacity="0.75"/>
+      <path d="M0 220c30 25 60 25 90 0s60-25 90 0 60 25 90 0 60-25 90 0 60 25 90 0" stroke="#1E3A78" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+      <path d="M0 260c30 25 60 25 90 0s60-25 90 0 60 25 90 0 60-25 90 0 60 25 90 0" stroke="#1E3A78" stroke-width="3" stroke-linecap="round" opacity="0.28"/>
+    </svg>
+  </div>
+</section>
+
+{# Bloco com os próximos horários, puxando de content/horarios.json - só uma prévia #}
+<section>
+  <div class="container">
+    <div class="cabecalho-secao">
+      <p class="rotulo">{{ horarios.selo }}</p>
+      <h2>{{ horarios.titulo }}</h2>
+    </div>
+    <div class="lista-horarios">
+      {% for item in horarios.lista %}
+      <div class="item-horario"><span>{{ item.nome }}</span><span>{{ item.quando }}</span></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# Cartões linkando as páginas que não estão no menu principal #}
+<section class="secao-alt">
+  <div class="container">
+    <div class="cabecalho-secao">
+      <p class="rotulo">Explore</p>
+      <h2>Conheça mais sobre a igreja</h2>
+    </div>
+    <div class="grade-links">
+      <a class="card-link" href="/quem-somos/">
+        <span class="selo-laranja">Quem somos</span>
+        <h3>Nossa missão e valores</h3>
+        <p>Conheça a história e o propósito da igreja.</p>
+      </a>
+      <a class="card-link" href="/cultos/">
+        <span class="selo-laranja">Programação</span>
+        <h3>Cultos e horários</h3>
+        <p>Veja todos os horários de cultos e encontros.</p>
+      </a>
+      <a class="card-link" href="/galeria/">
+        <span class="selo-laranja">Fotos</span>
+        <h3>Galeria</h3>
+        <p>Momentos e eventos da nossa comunidade.</p>
+      </a>
+      <a class="card-link" href="/downloads/">
+        <span class="selo-laranja">Materiais</span>
+        <h3>Downloads</h3>
+        <p>Escalas, apostilas e outros arquivos.</p>
+      </a>
+    </div>
+  </div>
+</section>
+{% endblock %}

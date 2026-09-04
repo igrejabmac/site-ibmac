@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+{# ======================================================
+   Este é o "molde" usado por TODAS as páginas do site.
+   Ele contém tudo que se repete em qualquer página: o
+   cabeçalho, o menu sanduíche e o rodapé. Cada página
+   (index.njk, quem-somos.njk, etc.) só precisa escrever
+   o conteúdo do MEIO - o resto vem daqui automaticamente.
+====================================================== #}
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }} · Igreja Batista Missionária em Águas Compridas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/estilo.css">
+</head>
+<body>
+
+  <header>
+    <div class="header-inner container" style="padding-left:0; padding-right:0;">
+      <a class="logo" href="/">
+        <img src="/img/logo-ibmac.png" alt="Logo da Igreja Batista Missionária em Águas Compridas">
+      </a>
+
+      {# Menu principal: os 3 itens fixos pedidos. A classe "ativo" acende
+         o sublinhado laranja na página em que a pessoa está no momento. #}
+      <nav class="nav-principal">
+        <a href="/" class="{{ 'ativo' if page.url == '/' else '' }}">Home</a>
+        <a href="/quem-somos/" class="{{ 'ativo' if page.url == '/quem-somos/' else '' }}">Quem somos</a>
+        <a href="/contato/" class="{{ 'ativo' if page.url == '/contato/' else '' }}">Contato</a>
+      </nav>
+
+      <button class="btn-menu" id="abrirMenu" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="drawer-fundo" id="fundoDrawer"></div>
+
+  <aside class="drawer" id="drawer">
+    <div class="drawer-topo">
+      <button class="drawer-fechar" id="fecharMenu" aria-label="Fechar menu">&times;</button>
+    </div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/quem-somos/">Quem somos</a>
+      <a href="/cultos/">Cultos e horários</a>
+      <a href="/galeria/">Galeria de fotos</a>
+      <a href="/downloads/">Downloads</a>
+      <a href="/contato/">Contato</a>
+    </nav>
+  </aside>
+
+  {# É AQUI que o conteúdo de cada página entra #}
+  {% block content %}{% endblock %}
+
+  <footer>
+    <div class="container rodape-inner">
+      <span>© 2026 Igreja Batista Missionária em Águas Compridas</span>
+      <span>Feito com carinho para a nossa comunidade</span>
+    </div>
+  </footer>
+
+  <script src="/js/menu.js"></script>
+</body>
+</html>

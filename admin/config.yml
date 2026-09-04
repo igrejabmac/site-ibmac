@@ -1,0 +1,114 @@
+# ============================================================
+# Este arquivo é o "cérebro" do painel de edição.
+# Cada bloco abaixo (em "collections") vira um item de menu
+# dentro do painel, com os campos que a pessoa pode preencher.
+# Comentários começam com # e não afetam o funcionamento.
+# ============================================================
+
+# "backend" diz ao painel ONDE salvar as alterações: aqui, dizemos
+# para usar o "git-gateway", que é a ponte oferecida pelo Netlify
+# entre o painel visual e o repositório no GitHub. Toda vez que
+# alguém salva algo no painel, isso vira automaticamente um commit
+# no GitHub - e o Netlify publica a mudança sozinho.
+backend:
+  name: git-gateway
+  branch: main
+
+# Pasta e endereço padrão para onde vão as imagens/arquivos enviados
+# pelo painel (bate com o que configuramos no .eleventy.js)
+media_folder: "content/imagens"
+public_folder: "/content/imagens"
+
+# Nome que aparece no topo do painel
+site_url: https://SEUSITE.netlify.app
+display_url: https://SEUSITE.netlify.app
+
+collections:
+
+  # ---------- HOME ----------
+  # "files" = coleção de página única (não se cria um novo "Home", só se edita o que já existe)
+  - name: "home"
+    label: "Página Home"
+    files:
+      - name: "home"
+        label: "Conteúdo da Home"
+        file: "content/home.json"
+        fields:
+          - { label: "Selo (texto pequeno acima do título)", name: "selo", widget: "string" }
+          - { label: "Título principal", name: "titulo", widget: "string" }
+          - { label: "Texto de apoio", name: "texto", widget: "text" }
+          - { label: "Texto do botão principal", name: "botao_principal", widget: "string" }
+          - { label: "Texto do botão secundário", name: "botao_secundario", widget: "string" }
+
+  # ---------- QUEM SOMOS ----------
+  - name: "quemsomos"
+    label: "Página Quem Somos"
+    files:
+      - name: "quemsomos"
+        label: "Conteúdo de Quem Somos"
+        file: "content/quemsomos.json"
+        fields:
+          - { label: "Selo", name: "selo", widget: "string" }
+          - { label: "Título", name: "titulo", widget: "string" }
+          - { label: "Texto de introdução", name: "texto", widget: "text" }
+          # "list" cria um botão de "+ adicionar item", repetindo os campos de dentro
+          - label: "Missão / Visão / Valores"
+            name: "valores"
+            widget: "list"
+            fields:
+              - { label: "Rótulo (ex: Missão)", name: "rotulo", widget: "string" }
+              - { label: "Título do item", name: "titulo", widget: "string" }
+              - { label: "Texto do item", name: "texto", widget: "text" }
+
+  # ---------- HORÁRIOS ----------
+  - name: "horarios"
+    label: "Cultos e Horários"
+    files:
+      - name: "horarios"
+        label: "Lista de horários"
+        file: "content/horarios.json"
+        fields:
+          - { label: "Selo", name: "selo", widget: "string" }
+          - { label: "Título", name: "titulo", widget: "string" }
+          - label: "Horários"
+            name: "lista"
+            widget: "list"
+            fields:
+              - { label: "Nome do culto/atividade", name: "nome", widget: "string" }
+              - { label: "Quando (ex: Domingo, 18h)", name: "quando", widget: "string" }
+
+  # ---------- CONTATO ----------
+  - name: "contato"
+    label: "Página Contato"
+    files:
+      - name: "contato"
+        label: "Dados de contato"
+        file: "content/contato.json"
+        fields:
+          - { label: "Endereço", name: "endereco", widget: "string" }
+          - { label: "Telefone", name: "telefone", widget: "string" }
+          - { label: "E-mail", name: "email", widget: "string" }
+
+  # ---------- GALERIA DE FOTOS ----------
+  # "folder" = coleção de VÁRIOS itens (cada foto vira um arquivo dentro de content/galeria)
+  # "create: true" faz aparecer o botão "+ Nova foto"
+  - name: "galeria"
+    label: "Galeria de Fotos"
+    folder: "content/galeria"
+    create: true
+    identifier_field: legenda
+    fields:
+      - { label: "Foto", name: "imagem", widget: "image" }
+      - { label: "Legenda", name: "legenda", widget: "string" }
+      - { label: "Ordem de exibição (número, menor aparece primeiro)", name: "ordem", widget: "number", default: 1 }
+
+  # ---------- DOWNLOADS ----------
+  - name: "downloads"
+    label: "Arquivos para Download"
+    folder: "content/downloads"
+    create: true
+    identifier_field: titulo
+    fields:
+      - { label: "Título do arquivo", name: "titulo", widget: "string" }
+      - { label: "Arquivo (PDF, imagem, etc.)", name: "arquivo", widget: "file" }
+      - { label: "Ordem de exibição (número, menor aparece primeiro)", name: "ordem", widget: "number", default: 1 }

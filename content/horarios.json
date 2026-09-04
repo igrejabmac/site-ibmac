@@ -1,0 +1,10 @@
+{
+  "selo": "Programação",
+  "titulo": "Cultos e horários",
+  "lista": [
+    { "nome": "Culto de celebração", "quando": "Domingo, 18h" },
+    { "nome": "Escola Bíblica Dominical", "quando": "Domingo, 9h" },
+    { "nome": "Culto de oração", "quando": "Quarta-feira, 19h30" },
+    { "nome": "Encontro de jovens", "quando": "Sexta-feira, 19h30" }
+  ]
+}

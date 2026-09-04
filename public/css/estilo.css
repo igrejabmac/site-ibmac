@@ -1,0 +1,142 @@
+/* ======================================================
+   VARIÁVEIS DE COR
+   Paleta baseada na logo da IBMAC: azul do livro, laranja
+   suavizado da chama, e fundo branco (como você pediu).
+====================================================== */
+:root {
+  --azul: #1E3A78;        /* azul principal - logo, títulos, menu, textos de destaque */
+  --azul-claro: #45599C;  /* variação mais clara do azul - texto de apoio e links */
+  --laranja: #DD8A4B;     /* laranja suave - cor de destaque (botões, ícones, sublinhados) */
+  --laranja-bg: #FBEEE3;  /* laranja bem clarinho - fundos sutis de selos/badges */
+  --branco: #FFFFFF;
+  --fundo-alt: #F5F6FA;   /* branco levemente acinzentado - para alternar seções sem sair do "branco" */
+  --tinta: #2B3A55;       /* cor do corpo do texto - tom escuro com base azulada, como pedido */
+  --borda: rgba(30,58,120,0.12); /* linhas divisórias sutis, sempre a partir do azul */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Work Sans', sans-serif;
+  background-color: var(--branco);
+  color: var(--tinta);
+  line-height: 1.6;
+}
+
+h1, h2, h3 { font-family: 'Fraunces', serif; font-weight: 500; line-height: 1.15; color: var(--azul); }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+/* Cabeçalho - agora em fundo branco, com a logo oficial */
+header { position: sticky; top: 0; z-index: 100; background-color: var(--branco); border-bottom: 1px solid var(--borda); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; }
+.logo { display: flex; align-items: center; gap: 12px; }
+.logo img { height: 46px; width: auto; }
+
+.nav-principal { display: flex; align-items: center; gap: 32px; }
+.nav-principal a { font-size: 15px; font-weight: 500; letter-spacing: 0.02em; position: relative; padding: 4px 0; color: var(--azul); }
+.nav-principal a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px; background: var(--laranja); transform: scaleX(0); transition: transform 0.25s ease; }
+.nav-principal a:hover::after,
+.nav-principal a.ativo::after { transform: scaleX(1); }
+
+.btn-menu { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
+.btn-menu span { width: 24px; height: 2px; background: var(--azul); border-radius: 2px; }
+
+@media (max-width: 780px) { .nav-principal { display: none; } }
+
+/* Menu sanduíche - fundo azul (traz a cor da marca para um destaque forte) */
+.drawer { position: fixed; top: 0; right: -320px; width: 300px; height: 100%; background: var(--azul); color: var(--branco); z-index: 200; padding: 28px 24px; transition: right 0.3s ease; box-shadow: -8px 0 24px rgba(0,0,0,0.2); }
+.drawer.aberto { right: 0; }
+.drawer-topo { display: flex; justify-content: flex-end; margin-bottom: 32px; }
+.drawer-fechar { background: none; border: none; color: var(--branco); font-size: 26px; cursor: pointer; line-height: 1; }
+.drawer nav a { display: block; font-family: 'Fraunces', serif; font-size: 20px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.15); color: var(--branco); }
+
+.drawer-fundo { position: fixed; inset: 0; background: rgba(20,30,60,0.45); z-index: 150; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+.drawer-fundo.aberto { opacity: 1; pointer-events: auto; }
+
+/* Hero */
+.hero { background: var(--fundo-alt); overflow: hidden; }
+.hero-inner { display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 40px; padding: 80px 24px; }
+.hero-eyebrow { color: var(--laranja); font-size: 14px; font-weight: 600; margin-bottom: 16px; }
+.hero h1 { font-size: clamp(32px, 5vw, 50px); margin-bottom: 20px; }
+.hero p { font-size: 17px; max-width: 46ch; color: var(--tinta); margin-bottom: 32px; }
+.hero-botoes { display: flex; flex-wrap: wrap; gap: 14px; }
+.hero-ilustracao { width: 100%; }
+
+.botao { display: inline-block; padding: 14px 26px; border-radius: 3px; font-size: 15px; font-weight: 500; cursor: pointer; border: 1px solid transparent; transition: transform 0.15s ease; }
+.botao:hover { transform: translateY(-2px); }
+.botao-principal { background: var(--laranja); color: var(--branco); }
+.botao-secundario { border-color: var(--azul); color: var(--azul); }
+
+/* Seções gerais */
+section { padding: 80px 0; }
+.cabecalho-secao { max-width: 60ch; margin-bottom: 48px; }
+.cabecalho-secao .rotulo { color: var(--laranja); font-weight: 600; font-size: 14px; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+.cabecalho-secao h2 { font-size: clamp(28px, 4vw, 38px); margin-bottom: 16px; }
+.cabecalho-secao p { color: var(--tinta); font-size: 16px; }
+.secao-alt { background: var(--fundo-alt); }
+
+/* Quem somos - valores */
+.valores { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+.valor { padding: 0 28px; border-left: 1px solid var(--borda); }
+.valor:first-child { padding-left: 0; border-left: none; }
+.valor .numero { font-family: 'Fraunces', serif; font-size: 15px; color: var(--laranja); margin-bottom: 10px; }
+.valor h3 { font-size: 19px; margin-bottom: 10px; }
+.valor p { font-size: 15px; color: var(--tinta); }
+
+@media (max-width: 780px) {
+  .valores { grid-template-columns: 1fr; gap: 28px; }
+  .valor { border-left: none; padding-left: 0; border-top: 1px solid var(--borda); padding-top: 24px; }
+  .valor:first-child { border-top: none; padding-top: 0; }
+}
+
+/* Horários */
+.lista-horarios { display: flex; flex-direction: column; max-width: 640px; }
+.item-horario { display: flex; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid var(--borda); font-size: 16px; }
+.item-horario span:first-child { font-weight: 500; color: var(--azul); }
+.item-horario span:last-child { color: var(--tinta); }
+
+/* Galeria de fotos */
+.galeria-grade { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.galeria-item { border-radius: 3px; overflow: hidden; background: var(--fundo-alt); border: 1px solid var(--borda); }
+.galeria-item img { width: 100%; height: 220px; object-fit: cover; }
+.galeria-item p { font-size: 13px; color: var(--tinta); padding: 10px 12px; }
+@media (max-width: 780px) { .galeria-grade { grid-template-columns: 1fr 1fr; } }
+
+/* Downloads */
+.lista-downloads { display: flex; flex-direction: column; max-width: 640px; gap: 12px; }
+.item-download { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; background: var(--branco); border: 1px solid var(--borda); border-radius: 3px; }
+.item-download span { color: var(--azul); font-weight: 500; }
+
+/* Cartões de navegação (usados na Home, para linkar as outras páginas) */
+.grade-links { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.card-link { padding: 24px; border: 1px solid var(--borda); border-radius: 4px; transition: border-color 0.2s ease, transform 0.15s ease; }
+.card-link:hover { border-color: var(--laranja); transform: translateY(-3px); }
+.card-link .selo-laranja { display: inline-block; background: var(--laranja-bg); color: var(--laranja); font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 20px; margin-bottom: 12px; }
+.card-link h3 { font-size: 17px; margin-bottom: 8px; }
+.card-link p { font-size: 14px; color: var(--tinta); }
+@media (max-width: 900px) { .grade-links { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .grade-links { grid-template-columns: 1fr; } }
+
+/* Contato */
+.contato-grade { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; }
+@media (max-width: 780px) { .contato-grade { grid-template-columns: 1fr; } }
+.info-contato p { margin-bottom: 18px; font-size: 15px; }
+.info-contato strong { display: block; font-family: 'Fraunces', serif; font-size: 16px; margin-bottom: 4px; color: var(--azul); }
+
+.campo { margin-bottom: 18px; }
+.campo label { display: block; font-size: 14px; margin-bottom: 6px; color: var(--azul-claro); }
+.campo input, .campo textarea { width: 100%; padding: 12px 14px; border: 1px solid var(--borda); border-radius: 3px; background: var(--branco); font-family: 'Work Sans', sans-serif; font-size: 15px; color: var(--tinta); }
+.campo textarea { resize: vertical; min-height: 110px; }
+
+/* Rodapé */
+footer { background: var(--azul); color: rgba(255,255,255,0.8); padding: 40px 0; font-size: 14px; }
+.rodape-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+
+@media (max-width: 780px) {
+  .hero-inner { grid-template-columns: 1fr; padding-top: 48px; }
+  .hero-ilustracao { display: none; }
+}

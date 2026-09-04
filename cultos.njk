@@ -1,0 +1,20 @@
+---
+title: "Cultos e horários"
+permalink: "/cultos/index.html"
+---
+{% extends "base.njk" %}
+{% block content %}
+<section>
+  <div class="container">
+    <div class="cabecalho-secao">
+      <p class="rotulo">{{ horarios.selo }}</p>
+      <h2>{{ horarios.titulo }}</h2>
+    </div>
+    <div class="lista-horarios">
+      {% for item in horarios.lista %}
+      <div class="item-horario"><span>{{ item.nome }}</span><span>{{ item.quando }}</span></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

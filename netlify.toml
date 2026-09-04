@@ -1,0 +1,14 @@
+# ============================================================
+# Este arquivo diz ao Netlify EXATAMENTE como publicar o site,
+# então você não precisa configurar nada manualmente na hora
+# de conectar o repositório - o Netlify lê este arquivo sozinho.
+# ============================================================
+[build]
+  command = "npm run build"   # comando que gera o site (roda o Eleventy)
+  publish = "_site"           # pasta com o resultado final, que vai ao ar
+
+[[redirects]]
+  # Garante que o painel /admin sempre funcione corretamente
+  from = "/admin/*"
+  to = "/admin/:splat"
+  status = 200

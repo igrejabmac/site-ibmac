@@ -1,0 +1,35 @@
+<!doctype html>
+<!-- 
+  Esta página é o "painel de edição". A pessoa da igreja vai acessar
+  seusite.com.br/admin para chegar aqui. Ela loga com e-mail e senha
+  (configurado depois no Netlify Identity) e edita tudo visualmente -
+  esta página só carrega a ferramenta (Decap CMS); quem manda mesmo
+  é o arquivo config.yml, que fica na mesma pasta.
+-->
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel de edição - Igreja Águas Compridas</title>
+</head>
+<body>
+  <!-- Este script conecta a conta de login (Netlify Identity) ao painel -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <!-- Este script carrega a ferramenta de edição em si (Decap CMS) -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    // Se a pessoa clicar num link de convite por e-mail, este trecho
+    // garante que ela caia direto na tela de "criar senha", em vez de
+    // precisar entender o processo sozinha.
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", (user) => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+---
+title: "Downloads"
+permalink: "/downloads/index.html"
+---
+{% extends "base.njk" %}
+{% block content %}
+<section>
+  <div class="container">
+    <div class="cabecalho-secao">
+      <p class="rotulo">Materiais</p>
+      <h2>Downloads</h2>
+    </div>
+    <div class="lista-downloads">
+      {% for item in downloads %}
+      <div class="item-download">
+        <span>{{ item.titulo }}</span>
+        <a class="botao botao-principal" href="{{ item.arquivo }}" download>Baixar</a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

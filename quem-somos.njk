@@ -1,0 +1,26 @@
+---
+title: "Quem somos"
+permalink: "/quem-somos/index.html"
+---
+{% extends "base.njk" %}
+{% block content %}
+<section>
+  <div class="container">
+    <div class="cabecalho-secao">
+      <p class="rotulo">{{ quemsomos.selo }}</p>
+      <h2>{{ quemsomos.titulo }}</h2>
+      <p>{{ quemsomos.texto }}</p>
+    </div>
+
+    <div class="valores">
+      {% for item in quemsomos.valores %}
+      <div class="valor">
+        <p class="numero">{{ item.rotulo }}</p>
+        <h3>{{ item.titulo }}</h3>
+        <p>{{ item.texto }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}
