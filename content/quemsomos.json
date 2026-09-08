@@ -1,22 +1,22 @@
 {
   "selo": "Quem somos",
   "titulo": "Uma comunidade de fé enraizada no bairro",
-  "texto": "A Igreja Batista Missionária em Águas Compridas existe para anunciar o evangelho, formar discípulos e servir as famílias da nossa região com amor prático.",
+  "texto": "A Igreja Batista Missionária em Águas Compridas existe para anunciar o verdadeiro evangelho, formar discípulos de Cristo e apoiar a comunidade por meio do amor de Deus.",
   "valores": [
     {
       "rotulo": "Missão",
-      "titulo": "Anunciar e servir",
-      "texto": "Levar a mensagem de Cristo através da palavra e do cuidado com quem está ao nosso redor, dentro e fora da igreja."
+      "titulo": "Anunciar e Ensinar",
+      "texto": "Levar a mensagem de Cristo por meio da sua palavra e do cuidado para quem precisa, dentro e fora da igreja."
     },
     {
       "rotulo": "Visão",
-      "titulo": "Comunidade que acolhe",
+      "titulo": "Igreja que acolhe",
       "texto": "Ser um lugar onde qualquer pessoa se sinta bem-vinda, independente de onde esteja em sua caminhada de fé."
     },
     {
       "rotulo": "Valores",
-      "titulo": "Fé, família e serviço",
-      "texto": "Cremos numa fé vivida em comunidade, que se traduz em cuidado com a família e serviço ao próximo."
+      "titulo": "Fé e Verdade",
+      "texto": "Cremos numa fé vivida em comunhão, que se traduz em cuidado com a família por meio da verdadeira palavra de Deus."
     }
   ]
 }
